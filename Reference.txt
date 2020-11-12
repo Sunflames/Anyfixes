@@ -1,0 +1,18 @@
+for id, value in ipairs(affixIDs) do
+    for i, value in pairs(value) do
+	if value == 1 and seasonID == 0 then print("Overflowing")end;
+	if value == 2 and seasonID == 0 then print("Skittish")end;
+	if value == 3 and seasonID == 0 then print("Volcanic")end;
+	if value == 4 and seasonID == 0 then print("Necrotic")end;
+	if value == 5 and seasonID == 0 then print("Teeminag")end;
+	if value == 6 and seasonID == 0 then print("Raging")end;
+	if value == 7 and seasonID == 0 then print("Bolstering")end;
+	if value == 8 and seasonID == 0 then print("Sanguine")end;
+	if value == 9 and seasonID == 0 then print("Tyrannical")end;
+	if value == 10 and seasonID == 0 then print("Fortified")end;
+	if value == 11 and seasonID == 0 then print("Bursting")end;
+	if value == 12 and seasonID == 0 then print("Grievous")end;
+	if value == 13 and seasonID == 0 then print("Explosive")end;
+	if value == 14 and seasonID == 0 then print("Quaking")end;
+    end
+end	

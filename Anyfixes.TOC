@@ -1,0 +1,9 @@
+
+## Interface: 90001
+## Title: |cff00ccffAnyfixes|r
+## Author: Ofer Aharonson
+## Version: 0.6
+## Notes: Show the current mythic+ affixes at slash command!
+## eMail: Ofer.Aharonson@Gmail.com
+
+Core.lua
