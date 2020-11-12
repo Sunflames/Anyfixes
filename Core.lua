@@ -8,6 +8,32 @@ local quouteoftheday = {'|cFFFF9900"#MythicPLUSrocks!"',
 -- MOTD + Random string alternator
 print("|cFFFFFF00Write /ax to get the current week affixes!", quouteoftheday[ math.random( 1, #quouteoftheday - 1)]);
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Work area
+--------------
+-- Slash /rl command reload ui
+SLASH_RELOADUI1 = "/rl"
+SlashCmdList.RELOADUI = ReloadUI
+
+-- Slash /rs command reload stack
+SLASH_FRAMESTK1 = "/rs"
+SlashCmdList.FRAMESTK = function()
+	LoadAddOn('Blizzard_DebugTools')
+	FrameStackTooltip_Toggle()
+end
+
+-- To be able to use left and right arrow keys without rotating char.
+for i = 1, NUM_CHAT_WINDOWS do
+	_G["ChatFrame"..i.."EditBox"]:SetAltArrowKeyMode(false)
+end
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+local UIConfig = CreateFrame("MainFrame", "MUI_MainFrame", UIParant, "BasicFrameTemplateWithInset");
+
+
+
+
 -- Slash command
 SLASH_ANYFIX1 = '/ax'
 SlashCmdList['ANYFIX'] = function(message)
