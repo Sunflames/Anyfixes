@@ -1,20 +1,25 @@
+-- Table containing strings for MOTD
 local quouteoftheday = {'|cFFFF9900"#MythicPLUSrocks!"',
 '|cFFFF9900"Why am I doing this to myself every week?"',
 '|cFFFF9900"This is the dungeon you have been looking for!"',
 '|cFFFF9900"If art thou seek thy loot, he shall receive!"',
 '|cFFFF9900"𝄞 This run has taken its toll on me 𝄞"'}
 
+-- MOTD + Random string alternator
 print("|cFFFFFF00Write /ax to get the current week affixes!", quouteoftheday[ math.random( 1, #quouteoftheday - 1)]);
 
+-- Slash command
 SLASH_ANYFIX1 = '/ax'
 SlashCmdList['ANYFIX'] = function(message)
 
+-- Affixes database puller
 local affixIDs = C_MythicPlus.GetCurrentAffixes()
 
 print("|cFFFF0000------------------------------------------|r");
 print("|cFFFF9900This week, the mythic+ affixes are:");
 print(" ");
 
+-- Nested table break and conditional strings
 for SeasonID, value in ipairs(affixIDs) do
     for i, value in pairs(value) do
 	if i == "id" and value == 1 then print("|cFFFF9900Overflowing|r - Healing in excess of a target's maximum health is instead converted to a life absorpotion effect.")end;
