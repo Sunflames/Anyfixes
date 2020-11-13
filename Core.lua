@@ -2,8 +2,7 @@
 local quouteoftheday = {'|cFFFF9900"#MythicPLUSrocks!"',
 '|cFFFF9900"Why am I doing this to myself every week?"',
 '|cFFFF9900"This is the dungeon you have been looking for!"',
-'|cFFFF9900"If art thou seek thy loot, he shall receive!"',
-'|cFFFF9900"𝄞 This run has taken its toll on me 𝄞"'}
+'|cFFFF9900"If art thou seek thy loot, thou shall receive!"'}
 
 -- MOTD + Random string alternator
 print("|cFFFFFF00Write /ax to get the current week affixes!", quouteoftheday[ math.random( 1, #quouteoftheday - 1)]);
@@ -22,47 +21,48 @@ SlashCmdList.FRAMESTK = function()
 	FrameStackTooltip_Toggle()
 end
 
--- To be able to use left and right arrow keys without rotating char.
-for i = 1, NUM_CHAT_WINDOWS do
-	_G["ChatFrame"..i.."EditBox"]:SetAltArrowKeyMode(false)
-end
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-local UIConfig = CreateFrame("MainFrame", "MUI_MainFrame", UIParant, "BasicFrameTemplateWithInset");
-
-
-
-
+local affixIDsAnyfixes2 = C_MythicPlus.GetCurrentAffixes()
+for i, affix in ipairs(affixIDsAnyfixes2) do
+	if affix.id ~= 0 and affix.id < 15 then
+	local Affixeslol = C_ChallengeMode.GetAffixInfo(affix.id)
+local tablaeu = {Affixeslol}
+print(tablaeu[1])
 -- Slash command
 SLASH_ANYFIX1 = '/ax'
 SlashCmdList['ANYFIX'] = function(message)
 
--- Affixes database puller
-local affixIDs = C_MythicPlus.GetCurrentAffixes()
+local Fra = CreateFrame("Frame", "MainFrame", UIParant, "UIPanelDialogTemplate");
+Fra:SetSize(400, 460);
+Fra:SetPoint("CENTER", UIParant, "CENTER");
 
-print("|cFFFF0000------------------------------------------|r");
-print("|cFFFF9900This week, the mythic+ affixes are:");
-print(" ");
+Fra.title = Fra:CreateFontString(nil, "OVERLAY");
+Fra.title:SetFontObject("GameFontHighlight");
+Fra.title:SetPoint("CENTER", MainFrameTitleBG, "CENTER", 5, 0);
+Fra.title:SetText("AnyFixes");
 
--- Nested table break and conditional strings
-for SeasonID, value in ipairs(affixIDs) do
-    for i, value in pairs(value) do
-	if i == "id" and value == 1 then print("|cFFFF9900Overflowing|r - Healing in excess of a target's maximum health is instead converted to a life absorpotion effect.")end;
-	if i == "id" and value == 2 then print("|cFFFF9900Skittish|r - Enemies receive 80% less threat from players.")end;
-	if i == "id" and value == 3 then print("|cFFFF9900Volcanic|r - In combat, enemies will periodically summon volcanic plume dealing 40% of the player max health.")end;
-	if i == "id" and value == 4 then print("|cFFFF9900Necrotic|r - All player's melee attack apply a stacking debuff that inflict increasing damage over time and reduce received healing by 2% for 9 seconds.")end;
-	if i == "id" and value == 5 then print("|cFFFF9900Teeming|r - additional non-boss monsters will appear throughout the dungeon, the number of required monsters to kill increased.")end;
-	if i == "id" and value == 6 then print("|cFFFF9900Raging|r - Non-boss enemies enrage at 30% health remaining, increasing damage by 100% until defeated.")end;
-	if i == "id" and value == 7 then print("|cFFFF9900Bolstering|r - Non-boss enemies empower nearby allies when killed, increasing maximum health by 20% and 20% more damage, stacking.")end;
-	if i == "id" and value == 8 then print("|cFFFF9900Sanguine|r - Non-boss enemies leave behind Sanguine Ichor when slain, healing enemies for 5% of their life per second and damaging players 15% of their life per second.")end;
-	if i == "id" and value == 9 then print("|cFFFF9900Tyrannical|r - Bosses have 40% more health, both bosses and their minions inflict 15% more damage.")end;
-	if i == "id" and value == 10 then print("|cFFFF9900Fortified|r - Non-boss enemies have 20% more health and inflict up to 30% more damage.")end;
-	if i == "id" and value == 11 then print("|cFFFF9900Bursting|r - Non-boss enemies inflict a stacking debuff to players upon death, dealing 14% of maximum health per second.")end;
-	if i == "id" and value == 12 then print("|cFFFF9900Grievous|r - Injured players suffer increasing damage over time until healed to maximum health.")end;
-	if i == "id" and value == 13 then print("|cFFFF9900Explosive|r - While in combat, enemies periodically spawn explosive orbs that will explode for 50% of players maximum health if not killed.")end;
-	if i == "id" and value == 14 then print("|cFFFF9900Quaking|r - Periodically, all players emit a shockwave, inflicting 40% of players maximum health and interrupt nearby allies.")end;
-    end
-end	
-print("|cFFFF0000------------------------------------------|r");print(" ");
+Fra.exitButton = CreateFrame("Button", nil, Fra, "GameMenuButtonTemplate");
+Fra.exitButton:SetPoint("LEFT", Fra, "BOTTOM", 100, 30);
+Fra.exitButton:SetSize(80,30);
+Fra.exitButton:SetText("Close");
+Fra.exitButton:SetNormalFontObject("GameFontNormalLarge");
+Fra.exitButton:SetHighlightFontObject("GameFontHighlightLarge");
+Fra.exitButton:SetScript("OnClick", function(self) self:GetParent():Hide() end);
+
+Fra.fontString1 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+Fra.fontString1:SetPoint("CENTER", Fra, "TOP", 0, -50);
+Fra.fontString1:SetText("This week, the mythic+ affixes are:");
+
+Fra.fontString2 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+Fra.fontString2:SetPoint("CENTER", Fra, "CENTER", 0, 0);
+Fra.fontString2:SetText(tablaeu[1]);
+Fra.fontString3 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+Fra.fontString3:SetPoint("CENTER", Fra, "CENTER", 0, -20);
+Fra.fontString3:SetText(tablaeu[2]);
+Fra.fontString4 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+Fra.fontString4:SetPoint("CENTER", Fra, "CENTER", 0, -40);
+Fra.fontString4:SetText(tablaeu[3]);
+end
+end
 end
