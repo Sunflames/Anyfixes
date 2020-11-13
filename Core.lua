@@ -6,64 +6,151 @@ local quouteoftheday = {'|cFFFF9900"#MythicPLUSrocks!"',
 
 -- MOTD + Random string alternator
 print("|cFFFFFF00Write /ax to get the current week affixes!", quouteoftheday[ math.random( 1, #quouteoftheday - 1)]);
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Work area
 --------------
-
 -- Slash /rs command reload stack
 SLASH_FRAMESTK1 = "/rs"
 SlashCmdList.FRAMESTK = function()
 	LoadAddOn('Blizzard_DebugTools')
 	FrameStackTooltip_Toggle()
 end
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
+local affixScheduleText = {
+	{"Fortified",	"Bolstering",	"Grievous"},
+	{"Tyrannical",	"Raging",	"Explosive"},
+	{"Fortified",	"Sanguine",	"Grievous"},
+	{"Tyrannical",	"Teeming",	"Volcanic"},
+	{"Fortified",	"Bolstering",	"Skittish"},
+	{"Tyrannical",	"Bursting",	"Necrotic"},
+	{"Fortified",	"Sanguine",	"Quaking"},
+	{"Tyrannical",	"Bolstering",	"Explosive"},
+	{"Fortified",	"Bursting",	"Volcanic"},
+	{"Tyrannical",	"Raging",	"Necrotic"},
+	{"Fortified",	"Teeming",	"Quaking"},
+	{"Tyrannical",	"Bursting",	"Skittish"}
+}
+--1: Overflowing, 2: Skittish,   3: Volcanic, 
+--4: Necrotic,    5: Teeming,    6: Raging, 
+--7: Bolstering,  8: Sanguine,   9: Tyrannical,
+--10: Fortified,  11: Bursting,  12: Grievous,
+--13: Explosive,  14: Quaking
 
-local affixIDsAnyfixes2 = C_MythicPlus.GetCurrentAffixes()
-for i, affix in ipairs(affixIDsAnyfixes2) do
-	if affix.id ~= 0 and affix.id < 15 then
-	local Affixeslol = C_ChallengeMode.GetAffixInfo(affix.id)
+local affixIDsAnyfixes = C_MythicPlus.GetCurrentAffixes()
+for i, affix in ipairs(affixIDsAnyfixes) do
+	if affix.id == 9 then
 
-image = {}
-image.data1
+		tier1 = "|cFFFF9900Tyrannical"
+		_, affixinfo1 = C_ChallengeMode.GetAffixInfo(9)
+	elseif affix.id == 10 then
+		tier1 = "|cFFFF9900Fortified"
+		_, affixinfo1 = C_ChallengeMode.GetAffixInfo(10)
+	end
 
--- Slash command
+	if affix.id == 7 then
+		tier2 = "|cFFFF9900Bolstering"
+		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(7)
+	elseif affix.id == 6 then
+		tier2 = "|cFFFF9900Raging"
+		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(6)
+	elseif affix.id == 8 then
+		tier2 = "|cFFFF9900Sanguine"
+		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(8)
+	elseif affix.id == 5 then
+		tier2 = "|cFFFF9900Teeming"
+		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(5)
+	end
+
+	if affix.id == 12 then
+		tier3 = "|cFFFF9900Grievous"
+		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(12)
+	elseif affix.id == 13 then
+		tier3 = "|cFFFF9900Explosive"
+		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(13)
+	elseif affix.id == 3 then
+		tier3 = "|cFFFF9900Volcanic"
+		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(3)
+	elseif affix.id == 2 then
+		tier3 = "|cFFFF9900Skittish"
+		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(2)
+	elseif affix.id == 4 then
+		tier3 = "|cFFFF9900Necrotic"
+		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(4)
+	elseif affix.id == 14 then
+		tier3 = "|cFFFF9900Quaking"
+		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(14)
+	end
+
+-- Slash command --
 SLASH_ANYFIX1 = '/ax'
 SlashCmdList['ANYFIX'] = function(message)
 
+-- Frames --
+--Main Frame--
 local Fra = CreateFrame("Frame", "MainFrame", UIParant, "UIPanelDialogTemplate");
-Fra:SetSize(400, 460);
+Fra:SetSize(480, 350);
 Fra:SetPoint("CENTER", UIParant, "CENTER");
+Fra:SetMovable(true);
+Fra:EnableMouse(true);
+Fra:RegisterForDrag("LeftButton");
+Fra:SetScript("OnDragStart", Fra.StartMoving);
+Fra:SetScript("OnDragStop", Fra.StopMovingOrSizing);
+Fra:SetClampedToScreen(true);
 
-Fra.title = Fra:CreateFontString(nil, "OVERLAY");
+Fra.title = Fra:CreateFontString(nil, "Frame");
 Fra.title:SetFontObject("GameFontHighlight");
 Fra.title:SetPoint("CENTER", MainFrameTitleBG, "CENTER", 5, 0);
 Fra.title:SetText("AnyFixes");
 
 Fra.exitButton = CreateFrame("Button", nil, Fra, "GameMenuButtonTemplate");
-Fra.exitButton:SetPoint("LEFT", Fra, "BOTTOM", 100, 30);
-Fra.exitButton:SetSize(80,30);
+Fra.exitButton:SetPoint("LEFT", Fra, "BOTTOM", 160, 30);
+Fra.exitButton:SetSize(60,20);
 Fra.exitButton:SetText("Close");
-Fra.exitButton:SetNormalFontObject("GameFontNormalLarge");
-Fra.exitButton:SetHighlightFontObject("GameFontHighlightLarge");
+Fra.exitButton:SetNormalFontObject("GameFontNormal");
+Fra.exitButton:SetHighlightFontObject("GameFontHighlight");
 Fra.exitButton:SetScript("OnClick", function(self) self:GetParent():Hide() end);
 
-Fra.fontString1 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+-- Text walls --
+Fra.fontString1 = Fra:CreateFontString(nil, "Frame", "GameFontNormalLarge")
 Fra.fontString1:SetPoint("CENTER", Fra, "TOP", 0, -50);
-Fra.fontString1:SetText("This week, the mythic+ affixes are:");
+Fra.fontString1:SetText("|cFFFFFFFFThis week, the mythic+ affixes are:");
 
-Fra.fontString2 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-Fra.fontString2:SetPoint("CENTER", Fra, "CENTER", 0, 0);
-Fra.fontString2:SetText(Affixeslol);
+--Affix Tier 1--
+Fra.fontStringtier1 = Fra:CreateFontString(nil, "Frame", "GameFontNormalLarge")
+Fra.fontStringtier1:SetPoint("CENTER", Fra, "CENTER", -170, 80);
+Fra.fontStringtier1:SetText(tier1);
 
---Fra.Editbox = Fra:CreateEditBox
---Fra.fontString3 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
---Fra.fontString3:SetPoint("CENTER", Fra, "CENTER", 0, -20);
---Fra.fontString3:SetText(string.format(Affixeslol));
---Fra.fontString4 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
---Fra.fontString4:SetPoint("CENTER", Fra, "CENTER", 0, -40);
---Fra.fontString4:SetText(Affixeslol);
-end
+Fra.fontStringinfo1 = Fra:CreateFontString(nil, "Frame", "GameFontNormalSmall")
+Fra.fontStringinfo1:SetPoint("LEFT", 20, 50);
+Fra.fontStringinfo1:SetPoint("RIGHT", 20, 50);
+Fra.fontStringinfo1:SetJustifyH("LEFT");
+Fra.fontStringinfo1:SetMaxLines(2);
+Fra.fontStringinfo1:SetText(affixinfo1);
+
+--Affix Tier 2--
+Fra.fontStringtier2 = Fra:CreateFontString(nil, "Frame", "GameFontNormalLarge")
+Fra.fontStringtier2:SetPoint("CENTER", Fra, "CENTER", -170, 0);
+Fra.fontStringtier2:SetText(tier2);
+
+Fra.fontStringinfo2 = Fra:CreateFontString(nil, "Frame", "GameFontNormalSmall")
+Fra.fontStringinfo2:SetPoint("LEFT", 20, -25);
+Fra.fontStringinfo2:SetPoint("RIGHT", 20, -25);
+Fra.fontStringinfo2:SetJustifyH("LEFT");
+Fra.fontStringinfo2:SetMaxLines(2);
+Fra.fontStringinfo2:SetText(affixinfo2);
+
+--Affix Tier 3--
+Fra.fontStringtier3 = Fra:CreateFontString(nil, "Frame", "GameFontNormalLarge")
+Fra.fontStringtier3:SetPoint("CENTER", Fra, "CENTER", -170, -80);
+Fra.fontStringtier3:SetText(tier3);
+
+Fra.fontStringinfo3 = Fra:CreateFontString(nil, "Frame", "GameFontNormalSmall")
+Fra.fontStringinfo3:SetPoint("LEFT", 20, -110);
+Fra.fontStringinfo3:SetPoint("RIGHT", 20, -110);
+Fra.fontStringinfo3:SetJustifyH("LEFT");
+Fra.fontStringinfo3:SetMaxLines (2);
+Fra.fontStringinfo3:SetText(affixinfo3);
+
+--ending entire frames chain--
 end
 end
