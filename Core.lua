@@ -10,9 +10,6 @@ print("|cFFFFFF00Write /ax to get the current week affixes!", quouteoftheday[ ma
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Work area
 --------------
--- Slash /rl command reload ui
-SLASH_RELOADUI1 = "/rl"
-SlashCmdList.RELOADUI = ReloadUI
 
 -- Slash /rs command reload stack
 SLASH_FRAMESTK1 = "/rs"
@@ -27,8 +24,10 @@ local affixIDsAnyfixes2 = C_MythicPlus.GetCurrentAffixes()
 for i, affix in ipairs(affixIDsAnyfixes2) do
 	if affix.id ~= 0 and affix.id < 15 then
 	local Affixeslol = C_ChallengeMode.GetAffixInfo(affix.id)
-local tablaeu = {Affixeslol}
-print(tablaeu[1])
+
+image = {}
+image.data1
+
 -- Slash command
 SLASH_ANYFIX1 = '/ax'
 SlashCmdList['ANYFIX'] = function(message)
@@ -56,13 +55,15 @@ Fra.fontString1:SetText("This week, the mythic+ affixes are:");
 
 Fra.fontString2 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 Fra.fontString2:SetPoint("CENTER", Fra, "CENTER", 0, 0);
-Fra.fontString2:SetText(tablaeu[1]);
-Fra.fontString3 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-Fra.fontString3:SetPoint("CENTER", Fra, "CENTER", 0, -20);
-Fra.fontString3:SetText(tablaeu[2]);
-Fra.fontString4 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-Fra.fontString4:SetPoint("CENTER", Fra, "CENTER", 0, -40);
-Fra.fontString4:SetText(tablaeu[3]);
+Fra.fontString2:SetText(Affixeslol);
+
+--Fra.Editbox = Fra:CreateEditBox
+--Fra.fontString3 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+--Fra.fontString3:SetPoint("CENTER", Fra, "CENTER", 0, -20);
+--Fra.fontString3:SetText(string.format(Affixeslol));
+--Fra.fontString4 = Fra:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+--Fra.fontString4:SetPoint("CENTER", Fra, "CENTER", 0, -40);
+--Fra.fontString4:SetText(Affixeslol);
 end
 end
 end
