@@ -5,8 +5,9 @@ local quouteoftheday = {'|cFFFF9900"#MythicPLUSrocks!"',
 '|cFFFF9900"If art thou seek thy loot, thou shall receive!"'}
 
 -- MOTD + Random string alternator
-print("|cFFFFFF00Write /ax to get the current week affixes!", quouteoftheday[ math.random( 1, #quouteoftheday - 1)]);
---------------------------------------------------------------------------------------------------------------------------------------------------------------
+print("|cFFFFFF00Write /ax to get the current week affixes!",
+quouteoftheday[ math.random( 1, #quouteoftheday - 1)]);
+-----------------------------------------------------------------
 --Work area
 --------------
 -- Slash /rs command reload stack
@@ -15,30 +16,17 @@ SlashCmdList.FRAMESTK = function()
 	LoadAddOn('Blizzard_DebugTools')
 	FrameStackTooltip_Toggle()
 end
---------------------------------------------------------------------------------------------------------------------------------------------------------------
-local affixScheduleText = {
-	{"Fortified",	"Bolstering",	"Grievous"},
-	{"Tyrannical",	"Raging",	"Explosive"},
-	{"Fortified",	"Sanguine",	"Grievous"},
-	{"Tyrannical",	"Teeming",	"Volcanic"},
-	{"Fortified",	"Bolstering",	"Skittish"},
-	{"Tyrannical",	"Bursting",	"Necrotic"},
-	{"Fortified",	"Sanguine",	"Quaking"},
-	{"Tyrannical",	"Bolstering",	"Explosive"},
-	{"Fortified",	"Bursting",	"Volcanic"},
-	{"Tyrannical",	"Raging",	"Necrotic"},
-	{"Fortified",	"Teeming",	"Quaking"},
-	{"Tyrannical",	"Bursting",	"Skittish"}
-}
---1: Overflowing, 2: Skittish,   3: Volcanic, 
---4: Necrotic,    5: Teeming,    6: Raging, 
---7: Bolstering,  8: Sanguine,   9: Tyrannical,
---10: Fortified,  11: Bursting,  12: Grievous,
---13: Explosive,  14: Quaking
 
-local affixIDsAnyfixes = C_MythicPlus.GetCurrentAffixes()
-for i, affix in ipairs(affixIDsAnyfixes) do
-	if affix.id == 9 then
+-----------------------------------------------------------------
+-- 1: Overflowing, 2: Skittish,   3: Volcanic, 
+-- 4: Necrotic,    5: Teeming,    6: Raging, 
+-- 7: Bolstering,  8: Sanguine,   9: Tyrannical,
+-- 10: Fortified,  11: Bursting,  12: Grievous,
+--1 3: Explosive,  14: Quaking
+
+local affixIDs = C_MythicPlus.GetCurrentAffixes()();
+for i, affix in ipairs(affixIDs) do
+	if affix.seasonID == 0 and affix.id < 15 then
 
 		tier1 = "|cFFFF9900Tyrannical"
 		_, affixinfo1 = C_ChallengeMode.GetAffixInfo(9)
