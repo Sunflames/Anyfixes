@@ -24,7 +24,7 @@ end
 -- 10: Fortified,  11: Bursting,  12: Grievous,
 --1 3: Explosive,  14: Quaking
 
-local affixIDs = C_MythicPlus.GetCurrentAffixes()();
+local affixIDs = C_MythicPlus.GetCurrentAffixes();
 for i, affix in ipairs(affixIDs) do
 	if affix.seasonID == 0 and affix.id < 15 then
 
@@ -39,7 +39,7 @@ for i, affix in ipairs(affixIDs) do
 		tier2 = "|cFFFF9900Bolstering"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(7)
 	elseif affix.id == 6 then
-		tier2 = "|cFFFF9900Raging"
+		tier2 = "|cFFFF9900Ragingitg"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(6)
 	elseif affix.id == 8 then
 		tier2 = "|cFFFF9900Sanguine"
