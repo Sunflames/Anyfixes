@@ -28,6 +28,7 @@ local affixIDs = C_MythicPlus.GetCurrentAffixes();
 for i, affix in ipairs(affixIDs) do
 	if affix.seasonID == 0 and affix.id < 15 then
 
+	if affix.id == 9 then	
 		tier1 = "|cFFFF9900Tyrannical"
 		_, affixinfo1 = C_ChallengeMode.GetAffixInfo(9)
 	elseif affix.id == 10 then
@@ -140,5 +141,6 @@ Fra.fontStringinfo3:SetMaxLines (2);
 Fra.fontStringinfo3:SetText(affixinfo3);
 
 --ending entire frames chain--
+end
 end
 end
