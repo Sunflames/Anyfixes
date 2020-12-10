@@ -22,7 +22,7 @@ end
 -- 4: Necrotic,    5: Teeming,    6: Raging, 
 -- 7: Bolstering,  8: Sanguine,   9: Tyrannical,
 -- 10: Fortified,  11: Bursting,  12: Grievous,
---1 3: Explosive,  14: Quaking
+-- 13: Explosive,  14: Quaking
 
 local affixIDs = C_MythicPlus.GetCurrentAffixes();
 for i, affix in ipairs(affixIDs) do
@@ -31,46 +31,59 @@ for i, affix in ipairs(affixIDs) do
 	if affix.id == 9 then	
 		tier1 = "|cFFFF9900Tyrannical"
 		_, affixinfo1 = C_ChallengeMode.GetAffixInfo(9)
+		itemIcon1 = "Interface\\Addons\\Anyfixes\\Textures\\Tyrannical.blp"
 	elseif affix.id == 10 then
 		tier1 = "|cFFFF9900Fortified"
 		_, affixinfo1 = C_ChallengeMode.GetAffixInfo(10)
+		itemIcon1 = "Interface\\Addons\\Anyfixes\\Textures\\Fortified.blp"
 	end
 
 	if affix.id == 7 then
 		tier2 = "|cFFFF9900Bolstering"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(7)
+		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Bolstering.blp"
 	elseif affix.id == 6 then
 		tier2 = "|cFFFF9900Ragingitg"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(6)
+		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Raging.blp"
 	elseif affix.id == 8 then
 		tier2 = "|cFFFF9900Sanguine"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(8)
+		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Sanguine.blp"
 	elseif affix.id == 5 then
 		tier2 = "|cFFFF9900Teeming"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(5)
+		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Teeming.blp"
 	elseif affix.id == 11 then
 		tier2 = "|cFFFF9900Bursting"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(11)
+		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Bursting.blp"
 	end
 
 	if affix.id == 12 then
 		tier3 = "|cFFFF9900Grievous"
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(12)
+		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Grievous.blp"
 	elseif affix.id == 13 then
 		tier3 = "|cFFFF9900Explosive"
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(13)
+		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Explosive.blp"
 	elseif affix.id == 3 then
 		tier3 = "|cFFFF9900Volcanic"
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(3)
+		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Volcanic.blp"
 	elseif affix.id == 2 then
 		tier3 = "|cFFFF9900Skittish"
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(2)
+		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Skittish.blp"
 	elseif affix.id == 4 then
 		tier3 = "|cFFFF9900Necrotic"
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(4)
+		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Necrotic.blp"
 	elseif affix.id == 14 then
 		tier3 = "|cFFFF9900Quaking"
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(14)
+		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Quaking.blp"
 	end
 
 -- Slash command --
@@ -119,17 +132,29 @@ Fra.fontStringinfo1:SetJustifyH("LEFT");
 Fra.fontStringinfo1:SetMaxLines(2);
 Fra.fontStringinfo1:SetText(affixinfo1);
 
+Fra.affixIcon1 = Fra:CreateTexture(nil,"Frame",nil,0);
+Fra.affixIcon1:SetTexture(itemIcon1)
+Fra.affixIcon1:SetPoint("CENTER", Fra, "CENTER", -240, 80);
+Fra.affixIcon1:SetWidth(40);
+Fra.affixIcon1:SetHeight(40);
+
 --Affix Tier 2--
 Fra.fontStringtier2 = Fra:CreateFontString(nil, "Frame", "GameFontNormalLarge")
 Fra.fontStringtier2:SetPoint("CENTER", Fra, "CENTER", -170, 0);
 Fra.fontStringtier2:SetText(tier2);
 
 Fra.fontStringinfo2 = Fra:CreateFontString(nil, "Frame", "GameFontNormalSmall")
-Fra.fontStringinfo2:SetPoint("LEFT", 20, -25);
-Fra.fontStringinfo2:SetPoint("RIGHT", 20, -25);
+Fra.fontStringinfo2:SetPoint("LEFT", 20, -30);
+Fra.fontStringinfo2:SetPoint("RIGHT", 20, -30);
 Fra.fontStringinfo2:SetJustifyH("LEFT");
 Fra.fontStringinfo2:SetMaxLines(2);
 Fra.fontStringinfo2:SetText(affixinfo2);
+
+Fra.affixIcon2 = Fra:CreateTexture(nil,"Frame",nil,0);
+Fra.affixIcon2:SetTexture(itemIcon2)
+Fra.affixIcon2:SetPoint("CENTER", Fra, "CENTER", -240, 0);
+Fra.affixIcon2:SetWidth(40);
+Fra.affixIcon2:SetHeight(40);
 
 --Affix Tier 3--
 Fra.fontStringtier3 = Fra:CreateFontString(nil, "Frame", "GameFontNormalLarge")
@@ -142,6 +167,12 @@ Fra.fontStringinfo3:SetPoint("RIGHT", 20, -110);
 Fra.fontStringinfo3:SetJustifyH("LEFT");
 Fra.fontStringinfo3:SetMaxLines (2);
 Fra.fontStringinfo3:SetText(affixinfo3);
+
+Fra.affixIcon3 = Fra:CreateTexture(nil,"Frame",nil,0);
+Fra.affixIcon3:SetTexture(itemIcon3)
+Fra.affixIcon3:SetPoint("CENTER", Fra, "CENTER", -240, -80);
+Fra.affixIcon3:SetWidth(40);
+Fra.affixIcon3:SetHeight(40);
 
 --ending entire frames chain--
 end
