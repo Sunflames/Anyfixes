@@ -2,7 +2,7 @@
 ## Interface: 90002
 ## Title: |cff00ccffAnyfixes|r
 ## Author: Ofer Aharonson
-## Version: 0.8
+## Version: 1.1
 ## Notes: Show the current mythic+ affixes at slash command!
 ## eMail: Ofer.Aharonson@Gmail.com
 
