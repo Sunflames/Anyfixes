@@ -48,6 +48,9 @@ for i, affix in ipairs(affixIDs) do
 	elseif affix.id == 5 then
 		tier2 = "|cFFFF9900Teeming"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(5)
+	elseif affix.id == 11 then
+		tier2 = "|cFFFF9900Bursting"
+		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(11)
 	end
 
 	if affix.id == 12 then
@@ -77,7 +80,7 @@ SlashCmdList['ANYFIX'] = function(message)
 -- Frames --
 --Main Frame--
 local Fra = CreateFrame("Frame", "MainFrame", UIParant, "UIPanelDialogTemplate");
-Fra:SetSize(480, 350);
+Fra:SetSize(580, 350);
 Fra:SetPoint("CENTER", UIParant, "CENTER");
 Fra:SetMovable(true);
 Fra:EnableMouse(true);
@@ -92,7 +95,7 @@ Fra.title:SetPoint("CENTER", MainFrameTitleBG, "CENTER", 5, 0);
 Fra.title:SetText("AnyFixes");
 
 Fra.exitButton = CreateFrame("Button", nil, Fra, "GameMenuButtonTemplate");
-Fra.exitButton:SetPoint("LEFT", Fra, "BOTTOM", 160, 30);
+Fra.exitButton:SetPoint("LEFT", Fra, "BOTTOM", 210, 30);
 Fra.exitButton:SetSize(60,20);
 Fra.exitButton:SetText("Close");
 Fra.exitButton:SetNormalFontObject("GameFontNormal");
