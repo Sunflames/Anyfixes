@@ -24,6 +24,10 @@ end
 -- 10: Fortified,  11: Bursting,  12: Grievous,
 -- 13: Explosive,  14: Quaking
 
+-- Slash command --
+SLASH_ANYFIX1 = '/ax'
+SlashCmdList['ANYFIX'] = function(message)
+
 local affixIDs = C_MythicPlus.GetCurrentAffixes();
 for i, affix in ipairs(affixIDs) do
 	if affix.seasonID == 0 and affix.id < 15 then
@@ -85,10 +89,6 @@ for i, affix in ipairs(affixIDs) do
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(14)
 		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Quaking.blp"
 	end
-
--- Slash command --
-SLASH_ANYFIX1 = '/ax'
-SlashCmdList['ANYFIX'] = function(message)
 
 -- Frames --
 --Main Frame--
