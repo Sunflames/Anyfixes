@@ -16,6 +16,9 @@ SlashCmdList.FRAMESTK = function()
 	LoadAddOn('Blizzard_DebugTools')
 	FrameStackTooltip_Toggle()
 end
+-- Slash /rl command reload UI
+SlashCmdList['RELOADUI'] = function() ReloadUI() end
+SLASH_RELOADUI1 = '/rl'
 
 -----------------------------------------------------------------
 -- 1: Overflowing, 2: Skittish,   3: Volcanic, 
@@ -27,6 +30,7 @@ end
 -- Slash command --
 SLASH_ANYFIX1 = '/ax'
 SlashCmdList['ANYFIX'] = function(message)
+
 
 local affixIDs = C_MythicPlus.GetCurrentAffixes();
 for i, affix in ipairs(affixIDs) do
