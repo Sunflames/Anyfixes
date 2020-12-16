@@ -31,9 +31,9 @@ SLASH_RELOADUI1 = '/rl'
 SLASH_ANYFIX1 = '/ax'
 SlashCmdList['ANYFIX'] = function(message)
 
-
-local affixIDs = C_MythicPlus.GetCurrentAffixes();
-for i, affix in ipairs(affixIDs) do
+local Anyaffixes = C_MythicPlus.GetCurrentAffixes();
+print (Anyaffixes)
+for i, affix in ipairs(Anyaffixes) do
 	if affix.seasonID == 0 and affix.id < 15 then
 
 	if affix.id == 9 then	
