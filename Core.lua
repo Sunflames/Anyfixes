@@ -32,7 +32,6 @@ SLASH_ANYFIX1 = '/ax'
 SlashCmdList['ANYFIX'] = function(message)
 
 local Anyaffixes = C_MythicPlus.GetCurrentAffixes();
-print (Anyaffixes)
 for i, affix in ipairs(Anyaffixes) do
 	if affix.seasonID == 0 and affix.id < 15 then
 
