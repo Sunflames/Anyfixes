@@ -25,7 +25,8 @@ SLASH_RELOADUI1 = '/rl'
 -- 4: Necrotic,    5: Teeming,    6: Raging, 
 -- 7: Bolstering,  8: Sanguine,   9: Tyrannical,
 -- 10: Fortified,  11: Bursting,  12: Grievous,
--- 13: Explosive,  14: Quaking
+-- 13: Explosive,  14: Quaking	  123: Spiteful
+-- 122: Inspiring  124: Storming
 
 -- Slash command --
 SLASH_ANYFIX1 = '/ax'
@@ -33,7 +34,7 @@ SlashCmdList['ANYFIX'] = function(message)
 
 local Anyaffixes = C_MythicPlus.GetCurrentAffixes();
 for i, affix in ipairs(Anyaffixes) do
-	if affix.seasonID == 0 and affix.id < 20 and affixI.id > 121 then
+	if affix.seasonID == 0 and affix.id < 20 and affix.id > 121 then
 
 	if affix.id == 9 then	
 		tier1 = "|cFFFF9900Tyrannical"

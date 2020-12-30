@@ -1,8 +1,0 @@
-{
-    "Lua.diagnostics.globals": [
-        "SlashCmdList",
-        "FrameStackTooltip_Toggle",
-        "LoadAddOn",
-        "ReloadUI"
-    ]
-}
