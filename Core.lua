@@ -32,10 +32,13 @@ SLASH_RELOADUI1 = '/rl'
 SLASH_ANYFIX1 = '/ax'
 SlashCmdList['ANYFIX'] = function(message)
 
+local lalaaffixes = C_MythicPlus.GetCurrentAffixes();
+print(lalaaffixes);
+
+
 	local Maffixes = C_MythicPlus.GetCurrentAffixes();
-	if (Maffixes) then
 for i, affix in ipairs(Maffixes) do
-	if affix.seasonID == 0 and affix.id < 20 and affix.id > 121 then
+	if affix.seasonID == 1 then
 
 	if affix.id == 9 then	
 		tier1 = "|cFFFF9900Tyrannical"
@@ -106,6 +109,7 @@ for i, affix in ipairs(Maffixes) do
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(124)
 		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Quaking.blp"
 	end
+
 
 -- Frames --
 --Main Frame--
