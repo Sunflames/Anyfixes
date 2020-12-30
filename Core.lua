@@ -45,7 +45,6 @@ for i, affix in ipairs(Maffixes) do
 		tier1 = "|cFFFF9900Fortified"
 		_, affixinfo1 = C_ChallengeMode.GetAffixInfo(10)
 		itemIcon1 = "Interface\\Addons\\Anyfixes\\Textures\\Fortified.blp"
-
 	end
 
 	if affix.id == 7 then
@@ -76,7 +75,6 @@ for i, affix in ipairs(Maffixes) do
 		tier2 = "|cFFFF9900Inspiring"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(122)
 		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Bursting.blp"
-
 	end
 
 	if affix.id == 12 then
@@ -107,7 +105,6 @@ for i, affix in ipairs(Maffixes) do
 		tier3 = "|cFFFF9900Storming"
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(124)
 		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Quaking.blp"
-
 	end
 
 -- Frames --
