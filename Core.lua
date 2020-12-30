@@ -65,6 +65,15 @@ for i, affix in ipairs(Anyaffixes) do
 		tier2 = "|cFFFF9900Bursting"
 		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(11)
 		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Bursting.blp"
+	elseif affix.id == 11 then
+		tier2 = "|cFFFF9900Spiteful"
+		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(11)
+		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Bursting.blp"
+	elseif affix.id == 11 then
+		tier2 = "|cFFFF9900Inspiring"
+		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(11)
+		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Bursting.blp"
+
 	end
 
 	if affix.id == 12 then
@@ -91,6 +100,13 @@ for i, affix in ipairs(Anyaffixes) do
 		tier3 = "|cFFFF9900Quaking"
 		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(14)
 		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Quaking.blp"
+	elseif affix.id == 14 then
+		tier3 = "|cFFFF9900Storming"
+		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(14)
+		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Quaking.blp"
+
+
+
 	end
 
 -- Frames --
