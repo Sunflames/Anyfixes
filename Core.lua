@@ -33,7 +33,7 @@ SlashCmdList['ANYFIX'] = function(message)
 
 local Anyaffixes = C_MythicPlus.GetCurrentAffixes();
 for i, affix in ipairs(Anyaffixes) do
-	if affix.seasonID == 0 and affix.id < 15 then
+	if affix.seasonID == 0 and affix.id < 20 and affixI.id > 121 then
 
 	if affix.id == 9 then	
 		tier1 = "|cFFFF9900Tyrannical"
@@ -43,6 +43,7 @@ for i, affix in ipairs(Anyaffixes) do
 		tier1 = "|cFFFF9900Fortified"
 		_, affixinfo1 = C_ChallengeMode.GetAffixInfo(10)
 		itemIcon1 = "Interface\\Addons\\Anyfixes\\Textures\\Fortified.blp"
+
 	end
 
 	if affix.id == 7 then
@@ -67,11 +68,11 @@ for i, affix in ipairs(Anyaffixes) do
 		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Bursting.blp"
 	elseif affix.id == 11 then
 		tier2 = "|cFFFF9900Spiteful"
-		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(11)
+		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(123)
 		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Bursting.blp"
 	elseif affix.id == 11 then
 		tier2 = "|cFFFF9900Inspiring"
-		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(11)
+		_, affixinfo2 = C_ChallengeMode.GetAffixInfo(122)
 		itemIcon2 = "Interface\\Addons\\Anyfixes\\Textures\\Bursting.blp"
 
 	end
@@ -102,10 +103,8 @@ for i, affix in ipairs(Anyaffixes) do
 		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Quaking.blp"
 	elseif affix.id == 14 then
 		tier3 = "|cFFFF9900Storming"
-		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(14)
+		_, affixinfo3 = C_ChallengeMode.GetAffixInfo(124)
 		itemIcon3 = "Interface\\Addons\\Anyfixes\\Textures\\Quaking.blp"
-
-
 
 	end
 
